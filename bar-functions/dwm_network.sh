@@ -4,14 +4,14 @@
 # anirudh2
 # GNU GPLv3
 
-# Dependencies: NetworkManager, curl
+. "$DIR/private_config.sh"
 
 dwm_network () {
-    rx0="$(cat /sys/class/net/wlp2s0/statistics/rx_bytes||cat /sys/class/net/wlp8s0/statistics/rx_bytes)"
-    tx0="$(cat /sys/class/net/wlp2s0/statistics/tx_bytes||cat /sys/class/net/wlp8s0/statistics/tx_bytes)"
+    rx0="$(cat /sys/class/net/$(echo $DEVICE)/statistics/rx_bytes)"
+    tx0="$(cat /sys/class/net/$(echo $DEVICE)/statistics/tx_bytes)"
     sleep 1s
-    rxf="$(cat /sys/class/net/wlp2s0/statistics/rx_bytes||cat /sys/class/net/wlp8s0/statistics/rx_bytes)"
-    txf="$(cat /sys/class/net/wlp2s0/statistics/tx_bytes||cat /sys/class/net/wlp8s0/statistics/tx_bytes)"
+    rxf="$(cat /sys/class/net/$(echo $DEVICE)/statistics/rx_bytes)"
+    txf="$(cat /sys/class/net/$(echo $DEVICE)/statistics/tx_bytes)"
 
     # Calculations
     rps=`expr $rxf - $rx0`
@@ -20,7 +20,6 @@ dwm_network () {
     tmps=`expr $tps / 1000`
 
     printf "%s" "$SEP1"
-    # echo -e " $rmps KB/s  $tmps KB/s"
 
     if [ "$IDENTIFIER" = "unicode" ]; then
         printf " %s  %s" "$rmps" "$tmps"
