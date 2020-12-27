@@ -25,7 +25,6 @@ export SEP2="]"
 . "$DIR/bar-functions/dwm_battery.sh"
 . "$DIR/bar-functions/dwm_backlight.sh"
 . "$DIR/bar-functions/dwm_alsa.sh"
-. "$DIR/bar-functions/dwm_weather.sh"
 . "$DIR/bar-functions/dwm_network.sh"
 . "$DIR/bar-functions/dwm_date.sh"
 
@@ -38,11 +37,10 @@ do
     dispstr="$dispstr$(dwm_battery)"
     dispstr="$dispstr$(dwm_backlight)"
     dispstr="$dispstr$(dwm_alsa)"
-    dispstr="$dispstr$(dwm_weather)"
     dispstr="$dispstr$(dwm_network)"
     dispstr="$dispstr$(dwm_date)"
 
     xsetroot -name "$dispstr"
-    sleep 1
+    sleep 1m
 
 done
