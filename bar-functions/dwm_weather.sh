@@ -7,8 +7,13 @@
 # Dependencies: curl
 
 # Change the value of LOCATION to match your city
+# Store the directory the script is running from
+LOC=$(readlink -f "$0")
+DIR=$(dirname "$LOC")
+
+. "$DIR/private_config.sh"
+
 dwm_weather() {
-    LOCATION=city
 
     printf "%s" "$SEP1"
     if [ "$IDENTIFIER" = "unicode" ]; then
