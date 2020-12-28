@@ -41,6 +41,6 @@ do
     dispstr="$dispstr$(dwm_date)"
 
     xsetroot -name "$dispstr"
-    sleep 1m
+    sleep 1s
 
 done
